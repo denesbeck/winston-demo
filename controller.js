@@ -1,37 +1,74 @@
 const logger = require('./winston');
+const _module = __dirname.split('/')[__dirname.split('/').length - 1];
+const { randomBytes } = require('crypto');
 
 const error = (_req, res) => {
-  logger.error('This is an error');
+  const logOptions = {
+    module: _module,
+    transaction: 'getError',
+    transaction_id: randomBytes(4).toString('hex'),
+  };
+  logger.error('This is an error', logOptions);
   res.send('ok');
 };
 
 const warn = (_req, res) => {
-  logger.warn('This is a warning');
+  const logOptions = {
+    module: _module,
+    transaction: 'getWarning',
+    transaction_id: randomBytes(4).toString('hex'),
+  };
+  logger.warn('This is a warning', logOptions);
   res.send('ok');
 };
 
 const success = (_req, res) => {
-  logger.success('This is a success');
+  const logOptions = {
+    module: _module,
+    transaction: 'getSuccess',
+    transaction_id: randomBytes(4).toString('hex'),
+  };
+  logger.success('This is a success', logOptions);
   res.send('ok');
 };
 
 const start = (_req, res) => {
-  logger.start('This is a start');
+  const logOptions = {
+    module: _module,
+    transaction: 'getStart',
+    transaction_id: randomBytes(4).toString('hex'),
+  };
+  logger.start('This is a start', logOptions);
   res.send('ok');
 };
 
 const login = (_req, res) => {
-  logger.login('This is a login');
+  const logOptions = {
+    module: _module,
+    transaction: 'getLogin',
+    transaction_id: randomBytes(4).toString('hex'),
+  };
+  logger.login('This is a login', logOptions);
   res.send('ok');
 };
 
 const param = (_req, res) => {
-  logger.param('This is a param');
+  const logOptions = {
+    module: _module,
+    transaction: 'getParam',
+    transaction_id: randomBytes(4).toString('hex'),
+  };
+  logger.param('This is a param', logOptions);
   res.send('ok');
 };
 
 const info = (_req, res) => {
-  logger.info('This is an info');
+  const logOptions = {
+    module: _module,
+    transaction: 'getInfo',
+    transaction_id: randomBytes(4).toString('hex'),
+  };
+  logger.info('This is an info', logOptions);
   res.send('ok');
 };
 
